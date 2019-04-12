@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{int t;
+cin>>t;
+while(t--)
+{
+    int n;
+    cin>>n;string s="";
+    while(n>0){
+        int r=n%2;
+        char c=r+'0';//adding 0 covert char to int
+        s=s+c;
+        n=n/2;
+    }
+reverse(s.begin(),s.end());//reverse string.
+    cout<<s<<endl;
+}
+	return 0;
+}
