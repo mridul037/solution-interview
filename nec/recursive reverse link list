@@ -1,0 +1,5 @@
+public void reverse(Node n){
+if(n==NULL)return;
+reverse(n.next);
+System.out.println(n.data);
+}
