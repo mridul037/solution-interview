@@ -1,0 +1,27 @@
+//here k is the range for out count array.
+counting sort(int a[],int k){
+int n=a.length;
+int count[k]={0};
+int final[999999];
+///// ///
+ 
+ for(int i=0;i<k;i++)
+ count[a[i]]++;
+
+//////////
+
+for(int i=1;i<k;i++)
+ count[i]+=count[i-1];
+
+///////////
+ 
+ for(int i=0;i<n;i++)
+{final[count[a[i]]-1]=a[i];
+count[a[i]]--;}
+
+///////////////
+
+for(int i=0;i<n;i++)
+cout<<final[i];
+
+}
