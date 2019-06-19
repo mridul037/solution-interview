@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int combinationSum4(vector<int>& nums, int target) {int dp[target+1];
+     dp[0]=nums[0];
+        for(int i=1;i<=target;i++)
+        for(int x=0;x<nums.size();x++)
+            if(i-nums[x]>=0)
+            dp[i]=dp[i]+dp[i-nums[x]];
+        
+        return dp[target];
+    }
+};
