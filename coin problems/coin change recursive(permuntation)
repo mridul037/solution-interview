@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+int fun(int n,int a[]){
+    if(n==0)return 1;
+   if(n<0)return 0;
+   
+  int c=0;
+  
+  for(int i=0;i<2;i++){int val=a[i];
+    if((n-val)>=0){
+        c=c+fun(n-val,a,i);
+       }
+  }
+    return c;
+}
+int main() {
+	int n=4;
+	int a[2]={1,2};
+	cout<<fun(n,a,0);
+	return 0;
+}
