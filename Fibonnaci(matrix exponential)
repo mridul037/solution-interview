@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+#define M 1000000007
+using namespace std;
+ 
+long long int *matrixm(long long int *A,long long int *B)
+{
+long long int *C=new long long int [4];
+C[0]=(((A[0]%M)*(B[0]%M))%M + ((A[1]%M)*(B[2]%M)));
+C[1]=(((A[0]%M)*(B[1]%M))%M + ((A[1]%M)*(B[3]%M)));
+C[2]=(((A[2]%M)*(B[0]%M))%M + ((A[3]%M)*(B[2]%M)));
+C[3]=(((A[2]%M)*(B[1]%M))%M + ((A[3]%M)*(B[3]%M)));
+return C;
+}
+long long int* power(long long int *T,long long int N)
+{
+if(N==1)
+return T;
+else if(N%2==0)
+return power(matrixm(T,T),N/2);
+else
+return matrixm(T,power(T,N-1));
+}
+long long int func(long long int N)
+{
+long long int* T=new long long int [4];
+T[0]=0;
+T[1]=1;
+T[2]=1;
+T[3]=1;
+if(N==1)
+return 1;
+if(N==2)
+return 2;
+T=power(T,N-1);
+return ((2*(T[0]%M))%M + (3*(T[1]%M))%M)%M;
+}
+int main()
+{
+int T;
+cin>>T;
+while(T--)
+{
+long long int N;
+cin>>N;
+cout<<func(N)<<endl;
+}
+}
