@@ -1,3 +1,4 @@
+//-----------first method--------------------//
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -27,4 +28,33 @@ int main()
    int sum=0;
    cout<<accumulate(xa.begin(),xa.end(),sum);
   return 0; 
+} 
+//------------using accumulate removing vector------------------///
+#include <bits/stdc++.h>
+using namespace std;
+int final_ans=0;
+int myfun(int x,int y){
+   return  x^y;
+}
+void printSubArrays(int arr[], int start, int end) 
+{       
+    if (end == 6)  
+        return; 
+    else if (start > end)  
+        printSubArrays(arr, 0, end + 1); 
+    else
+    {
+        int sum=0;
+        final_ans=final_ans+accumulate(arr+start,arr+end+1,sum,myfun);
+        printSubArrays(arr, start + 1, end); 
+    } 
+    return; 
+} 
+  
+int main() 
+{ 
+   int arr[6] =  {1, 3, 7, 9, 8, 7};
+   printSubArrays(arr, 0, 0);
+   cout<<final_ans;
+   return 0; 
 } 
