@@ -1,0 +1,29 @@
+using namespace std;
+void fun(string prefix,string suffix,vector<string>&ans){
+   if(suffix.length()==0)
+   {
+       ans.push_back(prefix);
+   }
+   else{
+       for(int i=0;i<suffix.length();i++)
+       {
+           fun(prefix+suffix[i],suffix.substr(0,i)+suffix.substr(i+1,suffix.length()),ans);
+       }
+    }
+    
+}
+int main() {int t;
+cin>>t;
+while(t--){
+	string s;
+	cin>>s;
+	vector<string>ans;
+//	int n=3;
+
+	fun("",s,ans);
+		sort(ans.begin(),ans.end());
+	for(int i=0;i<ans.size();i++)cout<<ans[i]<<" ";
+	cout<<endl;
+}
+	return 0;
+}
