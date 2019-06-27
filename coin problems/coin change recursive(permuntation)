@@ -8,7 +8,7 @@ int fun(int n,int a[]){
   
   for(int i=0;i<2;i++){int val=a[i];
     if((n-val)>=0){
-        c=c+fun(n-val,a,i);
+        c=c+fun(n-val,a);
        }
   }
     return c;
@@ -16,6 +16,6 @@ int fun(int n,int a[]){
 int main() {
 	int n=4;
 	int a[2]={1,2};
-	cout<<fun(n,a,0);
+	cout<<fun(n,a);
 	return 0;
 }
