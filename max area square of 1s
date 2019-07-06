@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+int fun(int m1[],int m){
+    stack<int>s;
+    int top;
+    int area=0;
+    int max_area=0,i=0;
+    while(i<m){
+        if(s.empty()||m1[s.top()]<=m1[i])
+        s.push(i++);
+        else{
+            top=m1[s.top()];
+            s.pop();
+            area=top*i; 
+            if(!s.empty())
+                area=top*(i-s.top()-1);
+            
+            max_area=max(area,max_area);
+        }
+    }
+    while(!s.empty())
+    {
+         top=m1[s.top()];
+            s.pop();
+            area=top*i; 
+            if(!s.empty())
+                area=top*(i-s.top()-1);
+            
+            max_area=max(area,max_area);
+        
+    }
+    return max_area;
+    
+}
+int maxArea(int M[MAX][MAX],int n,int m)
+{
+    int res=fun(M[0],m);
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+        if(M[i][j])M[i][j]+=M[i-1][j];
+        }
+        res=max(res,fun(M[i],m));
+    }
+        return res;
+    }
+
+int main() {int t;
+cin>>t;
+while(t--){
+    int n,m;
+cin>>n>>m;
+int a[n][m];
+for(int i=0;i<n;i++)
+for(int j=0;j<m;j++)
+cin>>a[i][j];
+maxArea(a,n,m);
+
+	return 0;
+}
