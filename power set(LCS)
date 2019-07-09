@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+string fun(string k,string s){
+  
+  string x="";
+  
+  int j=0;
+  
+  for(int i=0;i<s.length();i++)
+  
+  if(s[i]==k[j]){x=x+k[j];j++;}
+  
+  return x;
+
+}
+int main() {
+
+string	str="ABCDGH";int n=str.length();
+
+string	str1="AEDFHR",k="",lcs="",v="";
+
+for(int i=0;i<(1<<n);i++)
+
+  {k="";
+	
+  for(int j=0;j<n;j++)
+	
+  if(((1<<j)&i)>0)
+	
+  k=k+str[j];
+	
+  v=fun(k,str1);
+	
+  if(v.length()>lcs.length())lcs=v;    
+	
+  }
+	
+  cout<<lcs;
+	
+  return 0;
+}
