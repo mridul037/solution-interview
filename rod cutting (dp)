@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+    int a,b,c;
+
+    int fun(int n,vector<int>&dp){
+     if(n==0)return 0;
+     if(n<0)return INT_MIN;
+     else{
+     if(dp[n]!=-1)
+     return dp[n];
+     else
+     return dp[n]=max(1+fun(n-a,dp),max(1+fun(n-b,dp),1+fun(n-c,dp)));
+     }
+   }
+
+int main() {
+   int t;
+   cin>>t;
+   while(t--){
+       int n;
+       cin>>n;
+       vector<int>dp(n+1,-1);
+       cin>>a>>b>>c;
+       cout<<fun(n,dp)<<endl;
+    }
+	return 0;
+}
