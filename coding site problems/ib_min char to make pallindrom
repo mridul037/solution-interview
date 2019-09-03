@@ -1,0 +1,12 @@
+bool ispall(string s){string c=s;
+    reverse(s.begin(),s.end());
+    return (c==s);
+}
+int Solution::solve(string A) {
+    string s="";
+    for(int i=0;i<A.length();i++){
+        s=A.substr(0,A.size()-i);
+        if(ispall(s)){break;}
+    }
+    return A.length()-s.length();
+}
