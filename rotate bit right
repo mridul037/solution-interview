@@ -1,0 +1,13 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n=7;
+    int k=n&1;
+    int x=(int)(log2(n)-1);
+   x=pow(2,x);
+    n=(n>>1)|(k<<x);
+    cout<<n;
+   
+	return 0;
+}
