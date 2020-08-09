@@ -15,3 +15,26 @@ MyHashSet.prototype.remove = function(key) {
 MyHashSet.prototype.contains = function(key) {
     return this.obj[key]!==undefined;
 };
+//------------------------------------------//
+class MyHashSet {
+    
+    constructor() {
+        this.prime = 9377; // increase the prime # to reduce collisions
+        this.value = [...Array(this.prime)].map(_ => []);
+    }
+    
+    add(key) {
+        const idx = key % this.prime;
+        this.value[idx].push(key);
+    }
+    
+    remove(key) {
+        const idx = key % this.prime;
+        this.value[idx] = this.value[idx].filter(x => x !== key);
+    }
+    
+    contains(key) {
+        const idx = key % this.prime;
+        return this.value[idx].includes(key);
+    }
+}
