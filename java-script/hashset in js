@@ -1,0 +1,17 @@
+var MyHashSet = function() {
+    this.obj={}
+};
+
+
+MyHashSet.prototype.add = function(key) {
+    return this.obj[key]=true;  
+};
+
+
+MyHashSet.prototype.remove = function(key) {
+    delete this.obj[key];
+};
+
+MyHashSet.prototype.contains = function(key) {
+    return this.obj[key]!==undefined;
+};
