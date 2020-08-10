@@ -1,0 +1,16 @@
+/**
+ * Sort an array of strings based on the number of distinct
+ * characters that occur in the word (followed by the
+ * length of the word).
+ *
+ * $ charNumSort([“Bananas”, “do”, “not”, “grow”, “in”, “Mississippi”])
+ * $ do in not Mississippi Bananas grow
+ *
+ */
+ 
+ 
+ function getCount(str){
+  let str1=str
+   return String.prototype.concat(...new Set(str1)).length
+}
+arr.sort((x,y)=>getCount(x)-getCount(y)).sort((x,y)=>{if(getCount(x)===getCount(y)){return (y.length-x.length)}})
