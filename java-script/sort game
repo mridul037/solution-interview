@@ -24,3 +24,9 @@ const charNumSort = (input: Array<string>) =>
       return compare ? compare : second.length - first.length;
     })
     .join(" ");
+
+/////// -------collest one-------------.////
+
+let f,g;
+
+f=x=>x.sort((a,b)=>(g=x=>new Set(x).size)(a)-g(b)||(g=x=>x.length)(b)-g(a)) 
