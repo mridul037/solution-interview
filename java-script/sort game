@@ -14,3 +14,13 @@
    return String.prototype.concat(...new Set(str1)).length
 }
 arr.sort((x,y)=>getCount(x)-getCount(y)).sort((x,y)=>{if(getCount(x)===getCount(y)){return (y.length-x.length)}})
+
+
+///////////second solution////////////////////
+const charNumSort = (input: Array<string>) =>
+  input
+    .sort((first, second) => {
+      const compare = [...new Set(first)].length - [...new Set(second)].length;
+      return compare ? compare : second.length - first.length;
+    })
+    .join(" ");
