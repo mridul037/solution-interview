@@ -1,7 +1,50 @@
--- flaten a array --
+-- flaten a array ----------------------------------
 let flattened = [[0, 1], [2, 3], [4, 5]].reduce(
   function(accumulator, currentValue) {
     return accumulator.concat(currentValue)
   },
   []
 )
+---------group by age-------------------------------
+2 QUESTION:::::::::
+let people = [
+  { name: 'Alice', age: 21 },
+  { name: 'Max', age: 20 },
+  { name: 'Jane', age: 20 }
+];
+
+ANSWER::::::::::::::::::
+::::::::::::::::::::::::
+function groupBy(objectArray, property) {
+  return objectArray.reduce(function (acc, obj) {
+    let key = obj[property]
+    if (!acc[key]) {
+      acc[key] = []
+    }
+    acc[key].push(obj)
+    return acc
+  }, {})
+}
+::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::
+
+::::: OUTPUT::::::::::::::::::::::
+Object {  }
+loop1
+> Object { name: "Alice", age: 21 }
+> "key21"
+> "acc[key]undefined"
+> "acc{"21":[{"name":"Alice","age":21}]}"
+loop2
+> Object { 21: Array [Object { name: "Alice", age: 21 }] }
+> Object { name: "Max", age: 20 }
+> "key20"
+> "acc[key]undefined"
+> "acc{"20":[{"name":"Max","age":20}],"21":[{"name":"Alice","age":21}]}"
+loop3
+> Object { 20: Array [Object { name: "Max", age: 20 }], 21: Array [Object { name: "Alice", age: 21 }] }
+> Object { name: "Jane", age: 20 }
+> "key20"
+> "acc[key][object Object]"
+> "acc{"20":[{"name":"Max","age":20},{"name":"Jane","age":20}],"21":[{"name":"Alice","age":21}]}"
+> Object { 20: Array [Object { name: "Max", age: 20 }, Object { name: "Jane", age: 20 }], 21: Array [Object { name: "Alice", age: 21 }] }
