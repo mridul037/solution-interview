@@ -1,0 +1,13 @@
+------remove duplicate-----------------
+function  remove(arr){
+     var set=new Set(arr);
+    return [...set];
+ }
+
+----Array.prototype.Unshift-----------------
+
+var a1=[12,13,4,5,6]
+var a2=[7,8,9]
+var c= a1.prototype.unshift.apply(a1,a2)  ////  concats a2 after a1
+
+console.log(c) ///////12,13,4,5,6,7,8,9
