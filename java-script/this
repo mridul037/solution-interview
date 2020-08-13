@@ -1,0 +1,10 @@
+var o = {f: function() { return this.a + this.b; }};
+var p = Object.create(o);
+p.a = 1;
+p.b = 4;
+
+console.log(p.f()); // 5
+---------------------------------------------
+1)the object assigned to the variable p doesn't have its own f property, it inherits it from its prototype
+2)it doesn't matter that the lookup for f eventually finds a member with that name on o;
+3)the lookup began as a reference to p.f, so this inside the function takes the value of the object referred to as p
