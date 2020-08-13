@@ -1,0 +1,12 @@
+const users = [
+  { name: 'Thomas' },
+  { name: 'Rambo' }
+];
+
+const map = f => list => list.map(f);
+
+const getName = user => user.name;
+
+const getNames = map(getName);
+
+getNames(users) // [ 'Thomas', 'Rambo' 
