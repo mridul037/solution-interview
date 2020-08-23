@@ -1,0 +1,28 @@
+arr.flatMap(x => [x, x * 2]);
+// is equivalent to
+arr.reduce((acc, x) => acc.concat([x, x * 2]), []);
+// [1, 2, 2, 4, 3, 6, 4, 8]
+---------------------
+let arr1 = ["it's Sunny in", "", "California"];
+
+arr1.map(x => x.split(" "));
+// [["it's","Sunny","in"],[""],["California"]]
+
+arr1.flatMap(x => x.split(" "));
+// ["it's","Sunny","in", "", "California"]
+
+--------------------------------
+const isObject = (obj) =>
+  typeof obj === "object" && obj !== null && !Array.isArray(obj)
+
+const flatten = (obj, acc, prev) => {
+  if (!isObject(obj)) {
+    return [...acc, prev.join(".")]
+  }
+
+  return Object.entries(obj).flatMap(([key, value]) =>
+    flatten(value, acc, [...prev, key])
+  )
+}
+
+console.log(flatten(a, [], []))
